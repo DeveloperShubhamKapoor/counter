@@ -1,4 +1,5 @@
 import  React from "react"
+import styles from "./counter.module.css"
 
 const Counter = ({prop})=>{
 
@@ -8,7 +9,8 @@ const Counter = ({prop})=>{
         setCount(count+1)
     }
     const decrementCount = ()=>{
-        setCount(count-1)
+        if(count>0)
+        {setCount(count-1)}
     }
     const doubleCount =()=>{
         setCount(count*2)
@@ -16,7 +18,8 @@ const Counter = ({prop})=>{
 
     return (
         <div>
-            <h1>Counter: {count}</h1>
+            { count%2==0 ? <h1 className={styles.colorGreen}> Counter
+            : {count}</h1> : <h1 className={styles.colorRed}> Counter: {count}</h1> }  
             <button onClick ={incrementCount}>Increment</button>
             <button onClick ={decrementCount}>Decrement</button>
             <button onClick ={doubleCount}>Double</button>
